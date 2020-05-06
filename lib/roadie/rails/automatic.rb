@@ -8,7 +8,8 @@ module Roadie
         final_roadie_options = roadie_options,
         &block
       )
-        Mailer.roadie_mail(options, final_roadie_options, &block)
+        email = mail(options, &block)
+        MailInliner.new(email, final_roadie_options).execute
       end
 
       def roadie_options
