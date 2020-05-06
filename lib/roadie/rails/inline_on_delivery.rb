@@ -21,8 +21,8 @@ module Roadie
       private
 
       def inline_styles
-        if (options = roadie_options)
-          MailInliner.new(self, options).execute
+        if (@roadie_options)
+          MailInliner.new(self, @roadie_options).execute
         end
       end
     end
