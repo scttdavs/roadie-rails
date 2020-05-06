@@ -7,6 +7,7 @@ module Roadie
         super.tap do |email|
           email.extend InlineOnDelivery
           email.roadie_options = roadie_options.try(:dup)
+          Rails.logger.info("ROADIE #{roadie_options}")
         end
       end
 
