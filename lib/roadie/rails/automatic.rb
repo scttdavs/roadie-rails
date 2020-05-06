@@ -5,11 +5,10 @@ module Roadie
     module Automatic
       def mail(
         options = {},
-        final_roadie_options = roadie_options,
         &block
       )
-        email = mail(options, &block)
-        MailInliner.new(email, final_roadie_options).execute
+        email = super(options, &block)
+        MailInliner.new(email, roadie_options).execute
       end
 
       def roadie_options
