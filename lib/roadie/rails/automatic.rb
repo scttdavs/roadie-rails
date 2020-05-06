@@ -3,12 +3,12 @@
 module Roadie
   module Rails
     module Automatic
-      def mail(*args, &block)
-        super.tap do |email|
-          email.extend InlineOnDelivery
-          email.roadie_options = roadie_options.try(:dup)
-          Rails.logger.info("ROADIE #{roadie_options}")
-        end
+      def mail(
+        options = {},
+        final_roadie_options = roadie_options,
+        &block
+      )
+        Mailer.roadie_mail(options, final_roadie_options, &block)
       end
 
       def roadie_options
